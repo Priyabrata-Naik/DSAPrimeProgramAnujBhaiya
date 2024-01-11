@@ -44,7 +44,6 @@ public class MainClass {
         }
 
     }
-//    isSafe function needed to be sorted
     static boolean isSafe(int a[][], int row, int col, int num){
 //        Checking num if present in row
         for(int i = 0; i < 9; i++){
@@ -58,18 +57,23 @@ public class MainClass {
                 return false;
             }
         }
-//        Checking num if present in square box
-        if(row+1 < 9 && col+1 < 9 && num == a[row+1][col+1]){
-            return false;
+//        Checking num if present in 3 * 3  box
+        int startRow = row - row % 3;
+        int startCol = col - col % 3;
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if(a[i+startRow][j+startCol] == num){
+                    return false;
+                }
+            }
         }
         return true;
     }
-//    sudoku's isSafe function is not fully optimized
     static boolean sudoku(int a[][], int row, int col){
         if(row == 9)
             return true;
         if(col == 9){
-            return sudoku(a,row+1,col);
+            return sudoku(a,row+1,0);
         }
         if(a[row][col] != 0){
             return sudoku(a,row,col+1);

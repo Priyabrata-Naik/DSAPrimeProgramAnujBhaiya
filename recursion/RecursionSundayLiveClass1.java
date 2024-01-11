@@ -1,6 +1,6 @@
 package recursion;
 
-public class RecursionSundayClass {
+public class RecursionSundayLiveClass1 {
 
     public static void main(String[] args) {
 
