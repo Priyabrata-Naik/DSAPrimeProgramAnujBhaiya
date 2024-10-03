@@ -10,8 +10,8 @@ public class WaveArray {
 
 //        waveArray(arr);
 //        printArray(arr);
-//        waveArray(b);
-//        printArray(b);
+        waveArray(b);
+        printArray(b);
         waveArraySorted(b);
         printArray(b);
 
@@ -20,6 +20,7 @@ public class WaveArray {
         for(int e: a){
             System.out.print(e+" ");
         }
+        System.out.println();
     }
 
 //    Sorting

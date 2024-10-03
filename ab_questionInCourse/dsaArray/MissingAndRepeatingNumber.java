@@ -1,76 +1,69 @@
 package ab_questionInCourse.dsaArray;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Vector;
 
 public class MissingAndRepeatingNumber {
     public static void main(String[] args) {
 
-        int a[] = {1, 2, 3, 4, 4,6};
+        int a[] = {1, 2, 3, 4, 4, 6};
         Vector<Integer> v = findNumbers(a);
 
         System.out.println(v);
+        System.out.println(findNumbersOp(a));
 
     }
-//    Need missing Number logic
+
+//    T.C O(N^2), NEED TO OPTIMISE
     static Vector<Integer> findNumbers(int a[]){
 
         Vector<Integer> ans = new Vector<>();
-        if(a.length == 0) return ans;
-        Arrays.sort(a);
-        int num = 1;
         int n = a.length;
-        int stepCount = 0;
+        if(n == 0) return ans;
+        int missingNum = -1, repeatingNum = -1;
 
-        for(int i = 0; i < n; i++){
-            if(a[i] == num && stepCount + a[0] == num){
-                num++;
-//                stepCount++;
-            }else{
-                if(i > 0 && a[i] == a[i-1]){
-                    ans.add(a[i]);
-                    num = a[i];
-                    num++;
-                    continue;
-                }else if(a[i] != num && stepCount+a[0] != num){
-                    ans.add(num);
-//                    stepCount++;
-                    num = a[i];
+        for(int i = 1; i <= n; i++){
+            int count = 0;
+            for(int j = 0; j < n; j++){
+                if(a[j] == i){
+                    count++;
                 }
             }
-            int missingNumber = stepCount + a[0];
-
-            stepCount++;
+            if(count == 2) repeatingNum = i;
+            else if(count == 0) missingNum = i;
         }
+
+        if(missingNum != -1){
+            ans.add(missingNum);
+            ans.add(repeatingNum);
+        }
+
+        return ans;
+    }
+
+    static Vector<Integer> findNumbersOp(int a[]){
+        Vector<Integer> ans = new Vector<>();
+        int n = a.length;
+        int missing = -1, repeating = -1;
+        int elementCount[] = new int[n+1];
+
+        for(int i = 0; i < n; i++){
+            elementCount[a[i]]++;
+        }
+
+        for(int i = 1; i <= n; i++){
+            if(elementCount[i] == 2) repeating = i;
+            else if(elementCount[i] == 0) missing = i;
+        }
+
+        if(missing != -1){
+            ans.add(missing);
+            ans.add(repeating);
+        }
+
         return ans;
 
-//        Vector<Integer> ans = new Vector<>();
-//        if(a.length == 0) return ans;
-//        int missingNo = -1;
-//        int repeatingNo = -1;
-//        Arrays.sort(a);
-//        int n = a.length;
-//        for(int i = 1; i < n ; i++){
-//
-//            int count = 0;
-//            for(int j = 0; j < n; j++){
-//                if(a[j] == i){
-//                    count++;
-//                }
-//
-//                if(count == 2) repeatingNo = i;
-//                else if(count == 0) missingNo =i;
-//
-//                if(missingNo != -1 && repeatingNo != -1)
-//                    break;
-//
-//            }
-//        }
-//
-//        ans.add(missingNo);
-//        ans.add(repeatingNo);
-//        return ans;
-
-
     }
+
 }

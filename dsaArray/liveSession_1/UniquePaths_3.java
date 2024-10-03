@@ -28,6 +28,7 @@ public class UniquePaths_3 {
                 }
             }
         }
+        System.out.println("Total countZero -> " + countZero);
         return helper(grid,sx,sy,countZero);
     }
     static int helper(int grid[][], int x, int y, int countZero){
@@ -36,6 +37,7 @@ public class UniquePaths_3 {
         }
         if(grid[x][y] == 0) countZero--;
         if(grid[x][y] == 2){
+            System.out.println("countZero -> " + countZero);
             if(countZero == 0){
                 return 1;
             }else{

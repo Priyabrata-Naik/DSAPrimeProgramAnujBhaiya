@@ -8,7 +8,7 @@ public class ThreeSumProblem {
     public static void main(String[] args) {
 
 //        int a[] = {4, 3, 1, -1, 5, 8, 6,-7};
-        int arr[] = {4, 2, 2, 2, 1, 1, 1, -1, -3, 0, 1, 2, 3, 3, 3};
+        int arr[] = {-1, 0, 1, 2, -1, -4};
         Arrays.sort(arr);
         List<List<Integer>> ans = new ArrayList<>();
         for(int i = 0; i < arr.length-2; i++){
@@ -30,7 +30,7 @@ public class ThreeSumProblem {
         int r = a.length-1;
 
         while(l < r){
-            if(l > 0 && a[l] == a[l-1]) {
+            if(l > startFrom && a[l] == a[l-1]) {
                 l++;
                 continue;
             }

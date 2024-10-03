@@ -2,12 +2,13 @@ package dsaArray.session_2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class MinimumDifferenceArrayLocation {
     public static void main(String[] args) {
 
-        int a[] = {12, 9,-40, 8, 2, 11};
+        int a[] = {12, 9, 8, 2, 11};
 
         List<List<Integer>> ans = minDifferencePointerByMe(a);
         List<List<Integer>> res = minDifferencePointerOp(a);
@@ -38,13 +39,17 @@ public class MinimumDifferenceArrayLocation {
                 int bigNumber = Math.max(a[i],a[j]);
                 int smallNumber = Math.min(a[i],a[j]);
                 if(min == bigNumber - Math.abs(smallNumber)){
-                    res.add(a[i]);
                     res.add(a[j]);
+                    res.add(a[i]);
                     ans.add(res);
                 }
             }
 
         }
+
+        Collections.sort(ans, (o1, o2) -> {
+            return o1.get(0) - o2.get(0);
+        });
 
         return ans;
     }

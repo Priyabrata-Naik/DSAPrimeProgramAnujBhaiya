@@ -5,7 +5,8 @@ public class SortColor {
 
         int a[] = { 1, 2, 0, 1, 2, 0, 2, 1};
 //        sortColorBruteForce(a);
-        sortColorOp(a);
+//        sortColorOp(a);
+        sortColorBruteForce(a);
 
         for(int e: a){
             System.out.print(e+" ");

@@ -20,7 +20,7 @@ public class PermutationOfArray {
 
     static void permute(int a[], int l, int r, ArrayList<int[]> ans) {
         if (l == r) {
-            printArray(a);
+//            printArray(a);
             int b[] = new int[a.length];
             for (int i = 0; i < a.length; i++) {
                 b[i] = a[i];

@@ -28,6 +28,7 @@ public class KnightsTour {
         knightsTourHelper(a,n,0,0,movesX,movesY,1);
         return a;
     }
+
     static boolean knightsTourHelper(int a[][],int n,int curX, int curY,int movesX[],int movesY[],int step){
         if(step == n * n) return true;
 

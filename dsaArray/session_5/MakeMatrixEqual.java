@@ -39,7 +39,14 @@ public class MakeMatrixEqual {
     static int helper(int b[], int m, int k){
         int count = 0;
         for(int i = 0; i < b.length; i++){
-            count += Math.abs(b[i]-m)/k;
+//            absVal IS THE NO. OF STEPS IT WILL TAKE TO CONVERT INTO MEDIAN
+            int absVal = Math.abs(b[i] - m);
+//            IF absVal IS NOT DIVISIBLE BY K THEN IT CAN'T CONVERT TO MEDIAN SO IT WILL RETURN -1
+            if(absVal % k == 0){
+                count += absVal/k;
+            }else{
+                return -1;
+            }
         }
         return count;
     }
